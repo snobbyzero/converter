@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>Исходная валюта</th>
+    <th>Целевая валюта</th>
+    <th>Исходная сумма</th>
+    <th>Получаемая сумма</th>
+    <th>Дата</th>
+    </thead>
+    <tbody>
+    <tr th:each="conversion : ${conversions}">
+        <td><span th:text="${conversion.firstCharCode}"></span></td>
+        <td><span th:text="${conversion.secondCharCode}"></span></td>
+        <td><span th:text="${conversion.enteredValue}"></span></td>
+        <td><span th:text="${conversion.result}"></span></td>
+        <td><span th:text="${conversion.date}"></span></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/converter}">Converter</a>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<HTML xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+<form method="post" th:action="@{/converter}" th:object="${conversion}">
+    <select th:field="*{firstCharCode}">
+        <option th:each="currency: ${currencyList}" th:value="${currency.charCode}"
+                th:text="${currency.charCode}"></option>
+    </select>
+    <select th:field="*{secondCharCode}">
+        <option th:each="currency: ${currencyList}" th:value="${currency.charCode}"
+                th:text="${currency.charCode}"></option>
+    </select>
+    <br/>
+    <input type="text" th:field="*{enteredValue}"/>
+    <input type="text" th:value="${result}"/>
+    <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Check field
+        </span>
+    </div>
+    <br/>
+
+    <button type="submit" name="Convert">Convert</button>
+</form>
+<a th:href="@{/history}">History</a>
+</body>
+</HTML>
