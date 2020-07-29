@@ -40,9 +40,11 @@ public class RegistrationController {
 
     @PostMapping
     public String register(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
-        System.out.println("reg");
         if (userRepository.findByUsername(registrationForm.getUsername()).isPresent()) {
-            bindingResult.addError(new FieldError("username", "username", "This username has already taken"));
+            bindingResult.addError(new FieldError(
+                    "username",
+                    "username",
+                    "This username has already taken"));
         }
 
         if (bindingResult.hasErrors()) {
